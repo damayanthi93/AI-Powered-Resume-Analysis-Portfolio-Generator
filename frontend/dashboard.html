@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Career Hub | Dashboard</title>
+    <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+<body data-theme="dark" id="dashboard-wrapper">
+    <!-- Theme-controlled Radial Glows -->
+    <div class="bg-glows"></div>
+
+    <!-- Toast Notification Banner -->
+    <div id="toast-notification" class="toast">Toast Message</div>
+
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="logo-section">
+                <div class="logo-icon">⚡</div>
+                <div class="logo-text">AI Career Hub</div>
+            </div>
+            
+            <ul class="sidebar-menu">
+                <li class="sidebar-item active">
+                    <a href="#" data-tab="dashboard">
+                        <span>📊</span> Dashboard
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" data-tab="ats">
+                        <span>🔍</span> ATS Analyzer
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" data-tab="portfolio">
+                        <span>🌐</span> Portfolio Gen
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" data-tab="career">
+                        <span>🤖</span> AI Assistant
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" data-tab="analytics">
+                        <span>📈</span> Analytics
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" data-tab="profile">
+                        <span>👤</span> Profile
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" data-tab="settings">
+                        <span>⚙️</span> Settings
+                    </a>
+                </li>
+                <li class="sidebar-footer sidebar-item">
+                    <a href="#" data-tab="logout">
+                        <span>🚪</span> Logout
+                    </a>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- Main Dashboard Window -->
+        <main class="main-content">
+            <!-- Top Header Action Area -->
+            <header class="top-header">
+                <div class="page-title">
+                    <h2>Dashboard</h2>
+                </div>
+                <div class="header-actions">
+                    <!-- Theme Mode Toggle -->
+                    <button class="theme-toggle-btn" id="theme-toggle" title="Toggle Light/Dark Theme">☀️</button>
+                    <!-- User Avatar & Badge -->
+                    <div class="user-profile-badge">
+                        <div class="user-avatar" id="header-avatar">U</div>
+                        <span id="header-username">User</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- 1. DASHBOARD OVERVIEW VIEW -->
+            <section class="tab-content active" id="dashboard-section">
+                <div class="overview-grid">
+                    <div class="overview-card">
+                        <div class="card-details">
+                            <h3>Total Uploads</h3>
+                            <div class="card-value" id="stat-uploads">0</div>
+                        </div>
+                        <div class="card-icon">📁</div>
+                    </div>
+                    <div class="overview-card">
+                        <div class="card-details">
+                            <h3>Portfolios Built</h3>
+                            <div class="card-value" id="stat-portfolios">0</div>
+                        </div>
+                        <div class="card-icon">💼</div>
+                    </div>
+                    <div class="overview-card">
+                        <div class="card-details">
+                            <h3>Average ATS Score</h3>
+                            <div class="card-value" id="stat-avg-score">0%</div>
+                        </div>
+                        <div class="card-icon">⚡</div>
+                    </div>
+                    <div class="overview-card">
+                        <div class="card-details">
+                            <h3>Latest Scan Score</h3>
+                            <div class="card-value" id="stat-latest-score">0%</div>
+                        </div>
+                        <div class="card-icon">🎯</div>
+                    </div>
+                </div>
+
+                <div class="dashboard-split">
+                    <div class="panel-card">
+                        <div class="panel-title">Getting Started Guide</div>
+                        <div id="quick-start-panel">
+                            <!-- Populated dynamically -->
+                        </div>
+                        <div style="margin-top: 30px; line-height: 1.6;">
+                            <h4 style="font-weight:600; margin-bottom:10px;">Platform Guidelines:</h4>
+                            <ul style="padding-left: 20px; font-size: 13.5px; color: var(--text-secondary);">
+                                <li style="margin-bottom:8px;"><strong>ATS Optimization</strong>: Upload resume files (PDF/DOCX) to scan for keyword density, SWOT attributes and industry alignments.</li>
+                                <li style="margin-bottom:8px;"><strong>Instant Portfolios</strong>: Transition from raw resume layouts into beautifully compiled static HTML portfolios, editable in real time.</li>
+                                <li style="margin-bottom:8px;"><strong>AI Career Roadmaps</strong>: Obtain targeted pathways, tools, and technical projects optimized for candidate backgrounds.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="panel-card" style="display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;">
+                        <h3 style="font-family:'Outfit'; font-size:18px; margin-bottom:15px;">AI Resume Assistant</h3>
+                        <div style="font-size: 50px; margin-bottom:15px; animation: bounce 2s infinite;">🤖</div>
+                        <p style="font-size:13px; color:var(--text-secondary); max-width:240px; margin-bottom:20px;">Ready to help evaluate your credentials and map career goals.</p>
+                        <button onclick="document.querySelector('[data-tab=ats]').click();" class="btn btn-secondary" style="border-color:var(--accent); color:var(--accent);">Launch Scan</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 2. RESUME ATS ANALYZER VIEW -->
+            <section class="tab-content" id="ats-section">
+                <div class="panel-card">
+                    <div class="panel-title">ATS Optimizations</div>
+                    
+                    <!-- File Drag and Drop Zone -->
+                    <div class="upload-zone" id="upload-zone-container">
+                        <div class="upload-icon">📤</div>
+                        <h3>Upload your Resume</h3>
+                        <p>Drag and drop your PDF or DOCX file here, or click to browse files.</p>
+                        <input type="file" id="resume-file" accept=".pdf,.docx">
+                    </div>
+
+                    <!-- Loader Spinner -->
+                    <div class="loader-overlay" id="ats-loader">
+                        <div class="spinner"></div>
+                        <h4 style="font-weight: 500;">Analyzing Resume...</h4>
+                        <p style="font-size: 13px; color: var(--text-muted); margin-top: 5px;">Extracting content and running Groq AI calculations...</p>
+                    </div>
+
+                    <!-- Analysis Output -->
+                    <div id="ats-analysis-results" style="display: none;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 15px; margin-bottom: 25px;">
+                            <h3 id="ats-filename" style="font-family: 'Outfit'; font-size: 18px; font-weight: 600;">resume.pdf</h3>
+                            <button id="ats-reset-btn" class="btn btn-secondary" style="padding: 6px 12px; font-size: 12px;">Reset Scanner</button>
+                        </div>
+                        
+                        <div class="ats-results-grid">
+                            <div class="score-chart-container">
+                                <h4 style="font-size: 14px; font-weight: 600; color: var(--text-muted); margin-bottom: 15px;">ATS Match Score</h4>
+                                <svg viewBox="0 0 36 36" class="circular-chart">
+                                    <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                    <path id="score-circle" class="circle success" stroke-dasharray="0, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                    <text x="18" y="20.35" class="percentage" id="score-percent">0%</text>
+                                </svg>
+                                <p style="font-size: 12.5px; color: var(--text-secondary); margin-top: 15px; max-width: 180px;">A match score of 80%+ is recommended for automated enterprise screening.</p>
+                            </div>
+                            
+                            <div>
+                                <div class="swot-container">
+                                    <div class="swot-panel strengths">
+                                        <h4>💪 Resume Strengths</h4>
+                                        <ul id="ats-strengths"></ul>
+                                    </div>
+                                    <div class="swot-panel weaknesses">
+                                        <h4>⚠️ Key Vulnerabilities</h4>
+                                        <ul id="ats-weaknesses"></ul>
+                                    </div>
+                                </div>
+                                
+                                <div style="margin-top: 25px;">
+                                    <h4 style="font-size: 14px; font-weight: 600; margin-bottom: 8px;">🔍 Missing Industry Keywords</h4>
+                                    <div class="keyword-badges" id="ats-keywords"></div>
+                                </div>
+
+                                <div style="margin-top: 25px;">
+                                    <h4 style="font-size: 14px; font-weight: 600; margin-bottom: 8px;">💡 AI Improvement Suggestions</h4>
+                                    <ul id="ats-suggestions" style="padding-left: 20px; font-size: 13px; line-height: 1.6; color: var(--text-secondary);"></ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- CTA Actions after upload -->
+                        <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border-color); display: flex; gap: 15px; justify-content: flex-end;">
+                            <button onclick="document.querySelector('[data-tab=career]').click();" class="btn btn-secondary">Review Career Roadmap</button>
+                            <button id="portfolio-generator-btn" onclick="document.querySelector('[data-tab=portfolio]').click();" class="btn-primary" style="width: auto; padding: 10px 24px; display: none;">Build Live Portfolio</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3. RESUME TO PORTFOLIO GENERATOR VIEW -->
+            <section class="tab-content" id="portfolio-section">
+                <div class="panel-card">
+                    <div class="panel-title">Choose Design Template</div>
+                    
+                    <div class="template-grid">
+                        <div class="template-card minimalist active" data-template="minimalist">
+                            <div class="template-preview-mock">Ab</div>
+                            <h4>Minimalist Executive</h4>
+                            <p style="font-size: 11.5px; color: var(--text-muted); margin-top: 5px;">Clean light layouts & serif branding.</p>
+                        </div>
+                        <div class="template-card glassmorphism" data-template="glassmorphism">
+                            <div class="template-preview-mock">Glass</div>
+                            <h4>Neon Glassmorphism</h4>
+                            <p style="font-size: 11.5px; color: var(--text-muted); margin-top: 5px;">Modern card blurs & obsidian backgrounds.</p>
+                        </div>
+                        <div class="template-card creative" data-template="creative">
+                            <div class="template-preview-mock">Grad</div>
+                            <h4>Creative Gradient</h4>
+                            <p style="font-size: 11.5px; color: var(--text-muted); margin-top: 5px;">Vibrant color flows & grid accents.</p>
+                        </div>
+                    </div>
+
+                    <div id="portfolio-empty-preview" style="text-align: center; padding: 60px 0; border: 1px dashed var(--border-color); border-radius: 12px;">
+                        <p style="color: var(--text-muted); font-size: 14.5px;">No active resume loaded. Please upload a resume first to compile portfolio websites.</p>
+                        <button onclick="document.querySelector('[data-tab=ats]').click();" class="btn-primary" style="width: auto; display: inline-block; padding: 8px 20px; font-size: 13px; margin-top: 15px;">Go to Scan</button>
+                    </div>
+
+                    <div id="portfolio-preview-box" style="display: none;">
+                        <div class="preview-actions-panel">
+                            <div>
+                                <h4 style="font-weight: 600; font-size: 15px;">Responsive Design Live Preview</h4>
+                                <p style="font-size: 12px; color: var(--text-muted); margin-top: 3px;">Toggle viewport scales or deploy to host instantly.</p>
+                            </div>
+                            <div class="action-buttons">
+                                <button id="download-zip-btn" class="btn btn-secondary" style="display: none;">📥 Download ZIP</button>
+                                <button id="deploy-portfolio-btn" class="btn-primary" style="width: auto; padding: 10px 20px; display: none;">🚀 Deploy Live</button>
+                            </div>
+                        </div>
+
+                        <!-- Deployed Success Alert -->
+                        <div id="deployment-link-container" style="display: none; padding: 12px 20px; border-radius: 12px; border: 1px solid var(--success); background: rgba(16, 185, 129, 0.05); margin-top: 20px; font-size: 13.5px;">
+                            🎉 Your portfolio is hosted publicly: <a href="#" id="deployed-url-anchor" target="_blank" style="color: var(--success); font-weight: 600; margin-left: 5px; text-decoration: underline;">https://live.url</a>
+                        </div>
+
+                        <div class="live-preview-wrapper" style="margin-top: 20px;">
+                            <iframe id="portfolio-iframe" title="Portfolio Live View"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4. AI CAREER ASSISTANT VIEW -->
+            <section class="tab-content" id="career-section">
+                <div class="panel-card">
+                    <div class="panel-title">AI Career Assistant</div>
+                    
+                    <div id="career-empty-state" style="text-align: center; padding: 60px 0; border: 1px dashed var(--border-color); border-radius: 12px;">
+                        <p style="color: var(--text-muted); font-size: 14.5px;">No career recommendations available. Upload a resume file to allow AI synthesis.</p>
+                        <button onclick="document.querySelector('[data-tab=ats]').click();" class="btn-primary" style="width: auto; display: inline-block; padding: 8px 20px; font-size: 13px; margin-top: 15px;">Start Scan</button>
+                    </div>
+
+                    <div id="career-recommendations-list" style="display: none;">
+                        <div style="margin-bottom: 35px;">
+                            <h3 style="font-family: 'Outfit'; font-size: 16px; font-weight: 600; margin-bottom: 15px; border-bottom: 1px solid var(--border-color); padding-bottom: 8px;">🎓 Skills & Certifications Recommended</h3>
+                            <div id="career-skills-to-learn"></div>
+                        </div>
+                        
+                        <div style="margin-bottom: 35px;">
+                            <h3 style="font-family: 'Outfit'; font-size: 16px; font-weight: 600; margin-bottom: 15px; border-bottom: 1px solid var(--border-color); padding-bottom: 8px;">🛠️ Technical Projects to Build</h3>
+                            <div id="career-projects-to-build"></div>
+                        </div>
+
+                        <div>
+                            <h3 style="font-family: 'Outfit'; font-size: 16px; font-weight: 600; margin-bottom: 15px; border-bottom: 1px solid var(--border-color); padding-bottom: 8px;">🎯 Suggested Career Growth Pathways</h3>
+                            <div id="career-path-suggestions"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 5. ANALYTICS VIEW -->
+            <section class="tab-content" id="analytics-section">
+                <div class="panel-card">
+                    <div class="panel-title">ATS Match History Profile</div>
+                    
+                    <div id="analytics-empty-state" style="text-align: center; padding: 60px 0; border: 1px dashed var(--border-color); border-radius: 12px;">
+                        <p style="color: var(--text-muted); font-size: 14.5px;">Upload resumes to view history logs and trends.</p>
+                    </div>
+
+                    <div id="analytics-history-area" style="display: none;">
+                        <!-- SVG chart for scoring trends -->
+                        <div class="analytics-chart-container">
+                            <svg id="analytics-chart" width="100%" height="200" style="background: rgba(0,0,0,0.02); border-radius:12px; border: 1px solid var(--border-color);">
+                                <defs>
+                                    <linearGradient id="chart-grad" x1="0" y1="0" x2="0" y2="1">
+                                        <stop offset="0%" stop-color="var(--accent)" />
+                                        <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0.2" />
+                                    </linearGradient>
+                                </defs>
+                                <!-- Bars populated via JS -->
+                            </svg>
+                        </div>
+
+                        <!-- Historical list log -->
+                        <div class="history-table-wrapper" style="margin-top: 40px;">
+                            <h4 style="font-weight: 600; margin-bottom: 15px;">ATS History Log</h4>
+                            <table class="history-table" id="analytics-table">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Filename</th>
+                                        <th>Date Uploaded</th>
+                                        <th>ATS Score</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Populated dynamically -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 6. PROFILE VIEW -->
+            <section class="tab-content" id="profile-section">
+                <div class="dashboard-split">
+                    <div class="panel-card">
+                        <div class="panel-title">Edit Personal Settings</div>
+                        <form id="profile-form">
+                            <div class="form-group">
+                                <label for="profile-name">Full Name</label>
+                                <input type="text" id="profile-name" class="form-control" placeholder="Full Name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="profile-email">Email Address</label>
+                                <input type="email" id="profile-email" class="form-control" placeholder="email@domain.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="profile-password">Update Password</label>
+                                <input type="password" id="profile-password" class="form-control" placeholder="Leave blank to keep current password">
+                            </div>
+                            <button type="submit" class="btn-primary" style="width: auto; padding: 10px 24px;">Save Settings</button>
+                        </form>
+                    </div>
+
+                    <div class="panel-card">
+                        <div class="panel-title">Profile Summary</div>
+                        <p style="font-size: 13.5px; color: var(--text-secondary); margin-bottom: 10px;">Select any previously scanned resumes to resume work on them:</p>
+                        
+                        <div class="history-table-wrapper" style="margin-top: 15px;">
+                            <table class="history-table" style="font-size: 12.5px;">
+                                <thead>
+                                    <tr>
+                                        <th>File</th>
+                                        <th>Date</th>
+                                        <th>Score</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="profile-resume-list">
+                                    <!-- Populated via JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel-card" style="margin-top: 30px;">
+                    <div class="panel-title">Generated Portfolios history</div>
+                    <div class="history-table-wrapper">
+                        <table class="history-table">
+                            <thead>
+                                <tr>
+                                    <th>Base Resume</th>
+                                    <th>Template</th>
+                                    <th>Created Date</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="profile-portfolio-list">
+                                <!-- Populated via JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 7. SETTINGS VIEW -->
+            <section class="tab-content" id="settings-section">
+                <div class="panel-card">
+                    <div class="panel-title">Platform Configuration</div>
+                    <div class="settings-form">
+                        <div style="margin-bottom: 25px; padding-bottom: 20px; border-bottom: 1px solid var(--border-color);">
+                            <h4 style="font-weight:600; font-size:15px; margin-bottom:8px;">Model Settings</h4>
+                            <p style="font-size:13px; color:var(--text-muted); margin-bottom:12px;">This platform utilizes the Groq Cloud endpoint. The AI analyzes matches against Llama 3.3 models.</p>
+                            <span style="background:var(--accent-glow); border:1px solid var(--accent); color:var(--accent); font-size:11px; font-weight:600; padding:4px 10px; border-radius:30px;">llama-3.3-70b-versatile</span>
+                        </div>
+                        
+                        <div style="margin-bottom: 25px; padding-bottom: 20px; border-bottom: 1px solid var(--border-color);">
+                            <h4 style="font-weight:600; font-size:15px; margin-bottom:8px;">Theme Settings</h4>
+                            <p style="font-size:13px; color:var(--text-muted); margin-bottom:12px;">Toggle system lighting levels. Settings are remembered in your browser storage.</p>
+                            <button onclick="document.getElementById('theme-toggle').click();" class="btn btn-secondary">Toggle Light / Dark Mode</button>
+                        </div>
+
+                        <div>
+                            <h4 style="font-weight:600; font-size:15px; margin-bottom:8px;">Account Data Management</h4>
+                            <p style="font-size:13px; color:var(--text-muted); margin-bottom:12px;">Deletes all profile analyses, uploaded docx files and generated dynamic slugs.</p>
+                            <button class="btn" style="border-color:var(--danger); color:var(--danger); background:transparent;" onclick="alert('Demo reset - database tables intact.')">Reset Database</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Load Dashboard Logic -->
+    <script src="/js/dashboard.js"></script>
+</body>
+</html>

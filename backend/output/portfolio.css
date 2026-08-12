@@ -1,0 +1,16 @@
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',sans-serif;background:#f7f8fa;color:#333}
+.container{max-width:900px;margin:40px auto;background:#fff;padding:40px;border-radius:15px;box-shadow:0 10px 30px rgba(0,0,0,.1)}
+.header{text-align:center;margin-bottom:40px}
+.header h1{font-size:42px;color:#2c3e50}
+.header p{color:#7f8c8d;margin-top:10px;font-size:18px}
+.section{margin-bottom:30px}
+.section h2{color:#34495e;border-bottom:3px solid #3498db;margin-bottom:15px}
+ul{padding-left:20px}li{margin-bottom:10px}
+.skills span{display:inline-block;background:#3498db;color:#fff;padding:8px 16px;border-radius:25px;margin:5px;font-weight:500}
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:15px}
+.contact-box{background:#f1f3f6;padding:15px;border-radius:10px;font-weight:500}
+.footer{text-align:center;margin-top:50px;color:#999;font-size:15px}
+.reveal{opacity:0;transform:translateY(40px);transition:all .8s ease}
+.reveal.active{opacity:1;transform:none}

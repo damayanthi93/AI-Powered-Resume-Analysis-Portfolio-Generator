@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Career Hub | Elevate your Professional Profile</title>
+    <link rel="stylesheet" href="/css/dashboard.css">
+    <style>
+        .landing-hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            height: 100vh;
+            width: 100vw;
+            padding: 20px;
+            background: var(--bg-primary);
+        }
+        .hero-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 54px;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent), #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+        .hero-desc {
+            font-size: 18px;
+            color: var(--text-secondary);
+            max-width: 600px;
+            line-height: 1.6;
+            margin-bottom: 40px;
+        }
+        .cta-buttons {
+            display: flex;
+            gap: 15px;
+        }
+        @media (max-width: 600px) {
+            .hero-title {
+                font-size: 38px;
+            }
+            .cta-buttons {
+                flex-direction: column;
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body data-theme="dark">
+    <div class="bg-glows"></div>
+    <div class="landing-hero">
+        <div class="logo-icon" style="width: 60px; height: 60px; font-size: 30px; margin-bottom: 25px;">⚡</div>
+        <h1 class="hero-title">AI Career Hub</h1>
+        <p class="hero-desc">
+            Optimize your resume for applicant tracking systems, build custom dynamic portfolio websites in seconds, and receive AI-curated project and skill recommendations.
+        </p>
+        <div class="cta-buttons">
+            <a href="/login.html" class="btn btn-secondary" style="border-color: var(--accent); color: var(--accent); padding: 14px 30px; font-size: 15px; font-weight: 600; text-decoration: none; display: inline-block;">Sign In</a>
+            <a href="/signup.html" class="btn-primary" style="padding: 14px 30px; font-size: 15px; text-decoration: none; display: inline-block;">Get Started</a>
+        </div>
+    </div>
+</body>
+</html>

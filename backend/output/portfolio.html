@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DAMAYANTHI VELAMALA</title>
+<link rel="stylesheet" href="portfolio.css">
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="header reveal">
+<h1>DAMAYANTHI VELAMALA</h1>
+<p>Highly motivated B.Tech Computer Science and Engineering (CSE) student specializing in Artificial Intelligence and Machine Learning (AI & ML), with a solid foundation in JavaScript, Python, HTML5, CSS3, and web application development.</p>
+</div>
+
+<div class="section reveal">
+<h2>Contact</h2>
+<div class="contact-grid">
+<div class="contact-box">📞 +919381793055</div>
+<div class="contact-box">📧 dhamayanthivelamala@gmail.com</div>
+<div class="contact-box">📍 Kakinada</div>
+</div>
+</div>
+
+<div class="section reveal">
+<h2>Education</h2>
+<ul><li>{'Course': 'CSE-AI&ML', 'Institution': 'Kakinada Institute of Engineering and Technology', 'Date': 'June 5th, 2026', 'CGPA': '7.79/10'}</li></ul>
+</div>
+
+<div class="section reveal">
+<h2>Projects</h2>
+<ul><li>{'Name': 'AI DIET PLAN RECOMMENDATION SYSTEM', 'Description': 'Engineered an AI-driven diet recommendation platform to deliver personalized meal and nutrition plans tailored to individual user inputs and preferences.'}</li><li>{'Name': 'AI Resume-to-Portfolio Generator', 'Description': 'Developed a dynamic, AI-driven application leveraging Python, Flask, SQLAlchemy, SQLite, and Tailwind CSS to streamline resume-to-portfolio transformation.'}</li></ul>
+</div>
+
+<div class="section reveal">
+<h2>Skills</h2>
+<div class="skills"><span>PYTHON</span><span>HTML</span><span>JAVA SCRIPT</span><span>CSS</span><span>REACT.JS</span><span>ENGLISH</span><span>TELUGU</span><span>BASICS OF ML</span><span>EXPRESS.JS</span></div>
+</div>
+
+<div class="section reveal">
+<h2>Internship</h2>
+<ul></ul>
+</div>
+
+<div class="footer reveal">
+© 2026 DAMAYANTHI VELAMALA • Portfolio
+</div>
+
+</div>
+
+<script>
+const reveals=document.querySelectorAll(".reveal");
+
+function reveal(){
+for(let r of reveals){
+const h=window.innerHeight;
+const t=r.getBoundingClientRect().top;
+
+if(t<h-100)r.classList.add("active");
+}
+}
+
+window.addEventListener("scroll",reveal);
+reveal();
+</script>
+
+</body>
+</html>
